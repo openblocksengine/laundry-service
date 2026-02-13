@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --color-orange-600: #EA580C;
+  --color-orange-700: #C2410C;
+  --color-orange-50: #FFF7ED;
+  --color-orange-100: #FFEDD5;
+}
+
+:root {
+    --sidebar-width: 280px;
+    --topbar-height: 64px;
+}
+
+* {
+    @apply border-slate-200 dark:border-slate-800;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Stable Layout System */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    @apply bg-slate-50 dark:bg-slate-950;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive Spacing & Typography Fixes */
+.content-container {
+    padding: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .content-container {
+        padding: 2.5rem;
+    }
+}
+
+/* Card Styling - Mobile Optimized */
+.stat-card {
+    @apply bg-white dark:bg-slate-900 p-5 md:p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm transition-all;
+}
+
+/* Dashboard Chart Custom Tooltip Fix */
+.recharts-default-tooltip {
+    @apply !bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-2xl !shadow-2xl !p-4 !text-slate-900 dark:!text-slate-100;
+}
+
+/* Global Dark Mode Overrides for Better Compatibility */
+.dark body {
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+}
+
+.dark .bg-white {
+    background-color: #0f172a !important;
+}
+
+.dark .bg-slate-50 {
+    background-color: #1e293b !important;
+}
+
+.dark .text-slate-900 {
+    color: #ffffff !important;
+}
+
+.dark .text-slate-600 {
+    color: #cbd5e1 !important;
+}
+
+.dark .text-slate-500, .dark .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+/* Sidebar Specific Dark Mode Fixes */
+.dark aside, .dark .sidebar-container, .dark nav {
+    background-color: #020617 !important;
+    color: #f1f5f9 !important;
+}
+
+.dark .border-slate-200, .dark .border-slate-100 {
+    border-color: #1e293b !important;
+}
+
+/* Dashboard Specific Layout Refinements */
+.grid {
+    @apply gap-4 md:gap-6;
+}
+
+h1, h2, h3 {
+    @apply dark:text-white;
+}
+
+p {
+    @apply dark:text-slate-400;
+}
+
+/* Print Overrides */
+@media print {
+    .no-print { display: none !important; }
+    .main-wrapper { margin-left: 0 !important; width: 100% !important; overflow: visible !important; height: auto !important; }
+}
+
+/* Animations */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(-8%); }
+    50% { transform: translateY(0); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 4s infinite ease-in-out;
+}
